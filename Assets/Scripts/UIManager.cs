@@ -6,8 +6,8 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreDisplay;
-    [SerializeField] private TextMeshProUGUI batteryDisplay;
-    [SerializeField] private TextMeshProUGUI GrindingDisplay;
+   // [SerializeField] private TextMeshProUGUI batteryDisplay;
+   // [SerializeField] private TextMeshProUGUI GrindingDisplay;
 
     GameManager gameManager;
 
@@ -22,12 +22,12 @@ public class UIManager : MonoBehaviour
     {
         scoreDisplay.text = ("Score ") + gameManager.scoreDisplay();
 
-        batteryDisplay.text = ("Batteries ") + gameManager.batteryDisplay();
+       // batteryDisplay.text = ("Batteries ") + gameManager.batteryDisplay();
 
 
     }
-    public void GrindScore(GrindableObjects grindableObjects)
+   /* public void GrindScore(GrindableObjects grindableObjects)
     {
         GrindingDisplay.text = ("Grind Score ") + grindableObjects.ToString();
-    }
+    } */
 }

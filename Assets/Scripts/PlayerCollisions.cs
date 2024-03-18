@@ -30,7 +30,7 @@ public class PlayerCollisions : MonoBehaviour
             other.gameObject.SetActive(false);
             Battery battery = other.gameObject.GetComponent<Battery>();
 
-            battery.Collected();
+           // battery.Collected();
         }
     }
     

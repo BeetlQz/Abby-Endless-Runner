@@ -24,30 +24,41 @@ public class PlayerMovements : MonoBehaviour
     private float JumpTimer;
     private bool isGrinding = false;
 
+    Animator anim;
 
-    private void Update()
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+     void Update()
     {
         
         if (Physics2D.OverlapCircle(FeetPosition.position, GroundDistance, GroundLayer) == true)
         {
             isGrounded = true;
+            anim.SetBool("isGrounded", true);
         }
         else
         {
             isGrounded = false;
-            //animator.SetBool("IsJumping", false);
+            anim.SetBool("IsJumping", false);
+            anim.SetBool("isGrounded", false) ;
         }
 
         if (Physics2D.OverlapCircle(FeetPosition.position, GrindTop, GroundLayer) == true)
         {
             isGrounded = true;
             isGrinding = true;
-
+            anim.SetBool("isGrinding", true);
+            anim.SetBool("isGrounded", true);
         }
         else
         {
             isGrounded= false;
             isGrinding= false;
+            anim.SetBool("isGrinding", false) ;
+            anim.SetBool("isGrounded", false);
         }
 
         // isGrounded = Physics2D.OverlapCircle(feetPosition.position, GroundDistance, GroundLayer);
@@ -57,7 +68,7 @@ public class PlayerMovements : MonoBehaviour
             playerRigidbody.velocity = Vector2.up * JumpForce;
             IsJumping = true;
             Debug.Log(isGrounded);
-            //animator.SetBool("IsJumping", true);
+            anim.SetBool("IsJumping", true);
         }
 
         if(IsJumping && Input.GetButton("Jump"))
@@ -71,6 +82,7 @@ public class PlayerMovements : MonoBehaviour
             else
             {
                  IsJumping = false;
+                anim.SetBool("IsJumping", false);
             }
         }
 
@@ -78,9 +90,13 @@ public class PlayerMovements : MonoBehaviour
         {
             IsJumping = false;
             JumpTimer = 0f;
+            anim.SetBool("IsJumping", false);
         }
        
     }
+
+
+
 
    /* public void UpdateBatteryAmount(PlayerInventory playerInventory)
     {

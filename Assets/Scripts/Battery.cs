@@ -6,8 +6,6 @@ public class Battery : MonoBehaviour
 {
     GameManager gameManager;
 
-    public float NumberofBatteries = 0f;
-
     private void OnTriggerEnter(Collider other)
     {
        /* PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
@@ -18,11 +16,17 @@ public class Battery : MonoBehaviour
             gameObject.SetActive(false);
         } */
 
-    }
-    public void Collected()
+    }  
+    
+    public void Start()
     {
-        
+        StartSpawn();
+        gameManager = GameManager.Instance;
     }
+   /* public void Collected()
+    {
+        gameManager.BatteryCollected();
+    } */
 
     [SerializeField] private GameObject[] batteryPrefabs;
 
@@ -38,11 +42,7 @@ public class Battery : MonoBehaviour
 
     [SerializeField] private GameObject stageStart;
 
-    public void Start()
-    {
-        StartSpawn();
-        gameManager = GameManager.Instance;
-    }
+  
 
     // Update is called once per frame
     private void Update()
